@@ -25,7 +25,7 @@ export default function HomePage() {
       </svg>
      <Logo whiteLogo={whiteLogo} className='absolute top-[32%] left-[4%] md:left-[7%] sm:left-[15%] translate-x-[-50%] z-10 size-40'/>
 
-      <h1 className='absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-center font-bold text-6xl md:text-4xl sm:text-1xl sm:w-[300px] mt-6 font-Baloo'>DISH GENIE</h1>
+      <h1 className='absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-center font-bold text-6xl md:text-4xl sm:text-1xl sm:w-[300px] mt-6 font-baloo'>DISH GENIE</h1>
       <p className='absolute top-[65%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[510px] text-center font-worksans mt-2 sm:mt-0 sm:text-xs sm:w-[350px]'>An AI recipe generator that helps you create delicious dishes using only the ingredients you have on hand. Just input what’s in your kitchen, and DishGenie will craft a personalized recipe just for you!</p>
     </section>
 

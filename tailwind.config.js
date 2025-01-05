@@ -12,7 +12,7 @@ export default {
     },
     extend: {
       fontFamily:{
-        Baloo : ['Baloo', 'cursive'],
+        baloo: ['Baloo 2', 'sans-serif'],
         worksans : ['Work Sans', 'serif']
       },
       
