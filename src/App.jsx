@@ -2,7 +2,7 @@ import HomePage from "./pages/HomePage";
 import Video from "./components/video";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Button from "./components/Button";
-import { Recipe } from "./pages/Recipe";
+import Ingredients from './pages/Ingredients'
 
 function App () {
     return (
@@ -10,7 +10,7 @@ function App () {
     <Router>
         <Routes>
             <Route path="/" element={<HomePage />}/>
-            <Route path="/recipe" element={<Recipe />}/>
+            <Route path="/ingredients" element={<Ingredients />}/>
         </Routes>
     </Router>
        

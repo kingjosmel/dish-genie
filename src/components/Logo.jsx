@@ -2,7 +2,7 @@ export default function Logo(props) {
     return (
         <>
          <img
-        src={props.whiteLogo}
+        src={props.logo}
         alt="Logo"
         className={props.className}
       />
