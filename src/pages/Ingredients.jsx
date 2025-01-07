@@ -15,29 +15,47 @@ export default function Ingredients() {
     headers: {
       Authorization: `Bearer ${apiKey}`
     }
-  })
+  });
 
-  const Params = {
-    promot : `With ${ingredients}, list out the Nigerian dishes I can make and include the recipe for each.`,
-    model: 'gpt-3.5-turbo',
-    max_tokens: 500,
-    temperature: 0.7,
+  function fetchDishIdeas() {
+    const Params = {
+      prompt: `With ${ingredients}, list out the Nigerian dishes I can make and include the recipe for each.`,
+      model: 'gpt-3.5-turbo',
+      max_tokens: 500,
+      temperature: 0.7,
+    };
+
+    setLoading(true); // Set loading to true
+
+    Client.post('https://api.openai.com/v1/chat/completions', Params)
+      .then(res => {
+        setResponse(res.data.choices[0].message.content); // Update response state
+      })
+      .catch(err => {
+        if (err.response && err.response.status === 429 && retryCount < 5) {
+          // If we get a 429 error, wait and retry
+          const waitTime = Math.pow(2, retryCount) * 1000; // Exponential backoff
+          setTimeout(() => fetchDishIdeas(retryCount + 1), waitTime);
+        } else {
+          console.error(err);
+          setResponse('Error fetching data.'); // Update response state with error message
+        }
+      })
+      .finally(() => {
+        setLoading(false); // Set loading to false
+      });
   }
-
-  function fetchDishIdeas(){
-    Client.post('https://api.openai.com/v1/chat/completions', Params).then(res => console.log(res.data.choices[0])).catch(err => console.log(err))
-  }
-
 
   // Normal function to handle input change
   function handleInputChange(event) {
     setIngredients(event.target.value);
   }
 
+
   return (
     <>
      {/* Logo Component */}
-     
+
       <Logo logo={blackLogo} className="size-32 -mt-10 items-left flex justify-left sm:-ml-3" />
     <div className="p-6 font-worksans max-w-xl mx-auto">
      
